@@ -9,9 +9,7 @@ import { Suspense } from "react";
 
 export default function HomePage() {
   return (
-    <Container>
-      <Header />
-
+    <>
       <Suspense fallback={<SpinLoader />}>
         <FeaturedPost />
       </Suspense>
@@ -19,8 +17,6 @@ export default function HomePage() {
       <Suspense fallback={<SpinLoader />}>
         <PostsList /> 
       </Suspense>
-
-      <footer>Footer</footer>
-    </Container>
+    </>
   )
 }
