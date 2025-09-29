@@ -19,6 +19,11 @@ export class JsonPostRepository implements PostRepository {
         return posts.filter((p) => p.published)
     }
 
+    async findEverything(): Promise<PostModel[]> {
+        const posts = await this.readFromDisk()
+        return posts
+    }
+
     async findById(id: string): Promise<PostModel> {
         const posts = await this.findAll()
         const post = posts.find((p) => p.id === id)
@@ -28,7 +33,7 @@ export class JsonPostRepository implements PostRepository {
         return post
     }
 
-    async findBySlug(slug: string): Promise<PostModel> {
+    async findBySlugPublic(slug: string): Promise<PostModel> {
         const posts = await this.findAll()
         const post = posts.find((p) => p.slug === slug)
 
