@@ -17,3 +17,11 @@ export function formatRelativeDate(rawDate: string): string {
     addSuffix: true,
   }); //addSufix fica ex: há 10 minutos
 }
+
+export function formatHour(timestamps: number): string {
+  const date = new Date(timestamps)
+
+  return format(date, 'HH:mm:ss', {
+    locale: ptBR
+  })
+}
