@@ -1,9 +1,9 @@
-import { findAllPublicPosts } from "@/lib/posts/queries"
+import { findAllPublicPostsCached } from "@/lib/posts/queries/public"
 import { PostImage } from "../PostImage"
 import { PostSummary } from "../PostSummary"
 
 export async function FeaturedPost() {
-    const posts = await findAllPublicPosts()
+    const posts = await findAllPublicPostsCached()
     const post = posts[0]
 
     const postUrl = `post/${post.slug}`
