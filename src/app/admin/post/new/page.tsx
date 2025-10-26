@@ -1,20 +1,13 @@
-import { findAllPostAdmin } from "@/lib/posts/queries/admin"
-import { Metadata } from "next"
+import { Button } from "@/components/Button"
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = {
-  title: 'Post Admin'
-}
-
 export default async function AdminPostNewPage() {
-    const posts = await findAllPostAdmin()
-
     return (
-      <div className="pt-16">
-          {posts.map((post) => {
-              return <p key={post.id}>{post.title}</p>
-          })}
+      <div className="pt-16 flex gap-4 flex-wrap items-center">
+        <Button variant="default" size="sm">Confirma</Button>
+        <Button variant="ghost" size="md">Confirma</Button>
+        <Button variant="danger" size="lg" disabled>Confirma</Button>
       </div>
     )
 }
