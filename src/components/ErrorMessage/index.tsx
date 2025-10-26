@@ -1,13 +1,13 @@
 interface ErrorMessageProps {
-  pageTitle: string
+  pageTitle?: string
   contentTitle: string
   content: React.ReactNode
 }
 
-export function ErrorMessage({pageTitle, contentTitle, content}: ErrorMessageProps) {
+export function ErrorMessage({pageTitle = '', contentTitle, content}: ErrorMessageProps) {
     return (
         <>
-          <title>{pageTitle}</title>
+          {pageTitle && <title>{pageTitle}</title>}
           <div className="flex justify-center items-center min-h-[320px] bg-slate-900 
           text-slate-100 mb-16 p-8 rounded-xl text-center">
               <div>
