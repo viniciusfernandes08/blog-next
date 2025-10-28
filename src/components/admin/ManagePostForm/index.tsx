@@ -1,8 +1,14 @@
+'use client'
+
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { InputCheckbox } from "@/components/InputCheckbox";
+import { MarkdownEditor } from "@/components/MarkdownEditor";
+import { useState } from "react";
 
 export function ManagePostForm() {
+    const [contentValue, setContentValue] = useState('Esse é **um** exemplo')
+
     return (
         <form className="mb-16">
             <div className="flex flex-col gap-5">
@@ -19,6 +25,14 @@ export function ManagePostForm() {
         
               <InputCheckbox
                 labelText="Sobrenome" 
+              />
+
+              <MarkdownEditor
+                labelText="Conteúdo"
+                disabled={false}
+                textAreaName="content"
+                value={contentValue}
+                setValue={setContentValue} 
               />
         
               <Input

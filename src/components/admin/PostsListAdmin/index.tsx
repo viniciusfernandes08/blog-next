@@ -16,7 +16,7 @@ export default async function PostsListAdmin() {
     }
 
     return (
-      <div className="pt-12 text-6xl">
+      <div className="py-10 text-6xl">
         {posts.map(post => {
             return (
               <div key={post.id} 
