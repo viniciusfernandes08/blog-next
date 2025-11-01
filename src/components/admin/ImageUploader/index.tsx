@@ -69,7 +69,7 @@ export function ImageUploader() {
               onClick={handleChooseFile} 
               type="button" 
               className="self-start"
-              variant="null"
+              variant="default"
               disabled={isUploading}
             >
                 <ImageUpIcon />

@@ -21,13 +21,13 @@ export function Input({ labelText = '', ...props }: Props) {
           <input 
             {...props}
             className={clsx(
-                'bg-white outline-none text-base/tight',
+                'bg-white outline-none text-base/tight border-2 border-[#ccc]',
                 'rounded p-2',
                 'transition ease-in-out',
-                'placeholder-slate-400 disabled:bg-slate-200',
+                'placeholder-slate-400 disabled:bg-slate-300',
                 'disabled:placeholder-slate-400',
                 'disabled:text-slate-400',
-                'read-only:bg-slate-100',
+                'read-only:bg-slate-300',
                 props.className,
             )}
             id={id} 
