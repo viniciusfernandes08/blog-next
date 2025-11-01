@@ -5,6 +5,7 @@ import { Input } from "@/components/Input";
 import { InputCheckbox } from "@/components/InputCheckbox";
 import { MarkdownEditor } from "@/components/MarkdownEditor";
 import { useState } from "react";
+import { ImageUploader } from "../ImageUploader";
 
 export function ManagePostForm() {
     const [contentValue, setContentValue] = useState('Esse é **um** exemplo')
@@ -13,39 +14,69 @@ export function ManagePostForm() {
         <form className="mb-16">
             <div className="flex flex-col gap-5">
               <Input
-                labelText="Nome"
-                placeholder="Digite seu nome"
-                type="password" 
+                labelText="ID"
+                name="id"
+                placeholder="ID gerado automaticamente"
+                type="text"
+                defaultValue={''}
+                readOnly 
               />
-        
+
               <Input
-                labelText="Sobrenome"
-                placeholder="Digite seu sobrenome" 
+                labelText="Slug"
+                name="slug"
+                placeholder="Slug gerada automaticamente"
+                type="text"
+                defaultValue={''}
+                readOnly 
               />
-        
-              <InputCheckbox
-                labelText="Sobrenome" 
+
+              <Input
+                labelText="Autor"
+                name="author"
+                placeholder="Digite o nome do autor"
+                type="text"
+                defaultValue={''}
+              />
+
+              <Input
+                labelText="Título"
+                name="title"
+                placeholder="Digite o título"
+                type="text"
+                defaultValue={''}
+              />
+
+              <Input
+                labelText="Excerto"
+                name="excerpt"
+                placeholder="Digite o resumo"
+                type="text"
+                defaultValue={''}
               />
 
               <MarkdownEditor
                 labelText="Conteúdo"
-                disabled={false}
-                textAreaName="content"
                 value={contentValue}
-                setValue={setContentValue} 
+                setValue={setContentValue}
+                textAreaName="content"
+                disabled={false} 
               />
-        
+
+              <ImageUploader />
+
               <Input
-                disabled
-                labelText="Sobrenome"
-                readOnly 
+                labelText="Url da imagem de capa"
+                name="coverImageUrl"
+                placeholder="Digite a URL da imagem"
+                type="text"
+                defaultValue={''}
               />
-        
-              <Input
-                labelText="Sobrenome"
-                placeholder="Digite seu sobrenome"
-                defaultValue="Olá mundo"
-                readOnly 
+
+              <InputCheckbox
+                labelText="Publicar?"
+                name="published"
+                type="checkbox" 
               />
         
               <div className="mt-4">
