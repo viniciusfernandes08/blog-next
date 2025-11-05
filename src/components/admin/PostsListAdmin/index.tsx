@@ -23,7 +23,7 @@ export default async function PostsListAdmin() {
                 className={`${!post.published && 'bg-slate-300'} flex gap-2 
                   items-center justify-between py-2 px-2 text-base`}>
 
-                <Link href={`admin/post/${post.id}`}>{post.title}</Link>
+                <Link href={`/admin/post/${post.id}`}>{post.title}</Link>
 
                 {!post.published && (
                   <p className="text-xs text-slate-600 italic">(Não publicado)</p>
