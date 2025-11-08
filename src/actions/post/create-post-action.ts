@@ -11,13 +11,18 @@ export async function createPostAction(
     prevState: CreatePostActionState,
     formData: FormData,
 ): Promise<CreatePostActionState> {
-    const title = formData.get('title')?.toString() || ''
+    if(!(formData instanceof FormData)) {
+        return {
+            formState: prevState.formState,
+            errors: ['Dados inválidos']
+        }
+    }
 
+    const formDataToObj = Object.fromEntries(formData.entries())
+    console.log(formDataToObj)
+    
     return {
-        formState: {
-            ...prevState.formState,
-            title,
-        },
+        formState: prevState.formState,
         errors: [],
     }
 }
