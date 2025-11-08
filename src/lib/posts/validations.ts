@@ -1,4 +1,4 @@
-import { isUrlOrRelativePath } from '@/utils/verifyUrl';
+import { isUrlOrRelativePath } from '@/utils/verify-url';
 import sanitizeHtml from 'sanitize-html'
 import z from "zod";
 
