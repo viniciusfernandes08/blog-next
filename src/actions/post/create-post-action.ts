@@ -1,10 +1,9 @@
 'use server'
 
-import { drizzleDb } from "@/db/drizzle";
-import { postsTable } from "@/db/drizzle/schema";
 import { makePartialPublicPost, PublicPostModel } from "@/dto/post/dto"
 import { PostCreateSchema } from "@/lib/posts/validations";
 import { PostModel } from "@/models/post/post-model";
+import { postRepository } from "@/repositories/post";
 import { generateSlug } from "@/utils/generate-slug";
 import { handleZodErrors } from "@/utils/handle-zod-errors";
 import { revalidateTag } from "next/cache";
@@ -47,7 +46,21 @@ export async function createPostAction(
         slug: generateSlug(validPostData.title),
     }
 
-    await drizzleDb.insert(postsTable).values(newPost)
+    try {
+        await postRepository.create(newPost)
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return {
+                formState: newPost,
+                errors: [error.message]
+            }
+        }
+
+        return {
+            formState: newPost,
+            errors: ['Erro desconhecido']
+        }
+    }
 
     revalidateTag('posts')
     redirect(`/admin/post/${newPost.id}`)
