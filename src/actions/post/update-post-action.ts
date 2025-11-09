@@ -3,13 +3,14 @@
 import { makePartialPublicPost, makePublicPostFromDb, PublicPostModel } from "@/dto/post/dto"
 import { PostUpdateSchema } from "@/lib/posts/validations";
 import { postRepository } from "@/repositories/post";
+import { generateRandomString } from "@/utils/generate-random-string";
 import { handleZodErrors } from "@/utils/handle-zod-errors";
 import { revalidateTag } from "next/cache";
 
 type UpdatePostActionState = {
   formState: PublicPostModel;
   errors: string[];
-  success?: true;
+  success?: string;
 }
 
 export async function updatePostAction(
@@ -73,6 +74,6 @@ export async function updatePostAction(
     return {
         formState: makePublicPostFromDb(post),
         errors: [],
-        success: true
+        success: generateRandomString()
     }
 }
