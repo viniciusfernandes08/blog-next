@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyJwtSession } from "./lib/login/manage-login";
 
 export async function middleware(request: NextRequest) {
-    const isLoginPage = request.nextUrl.pathname.startsWith('/admin/post')
+    const isLoginPage = request.nextUrl.pathname.startsWith('/admin/login')
     const isAdminPage = request.nextUrl.pathname.startsWith('/admin')
     const isGetRequest = request.method === 'GET'
 
