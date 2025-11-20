@@ -1,4 +1,3 @@
-import bcrypt from 'bcryptjs'
 import { cookies } from 'next/headers'
 import { SignJWT, jwtVerify } from 'jose'
 import { redirect } from 'next/navigation';
@@ -14,16 +13,6 @@ const jwtEncodedKey = new TextEncoder().encode(jwtSecretKey)
 const loginExpSeconds = Number(process.env.LOGIN_EXPIRATION_SECONDS) || 86400
 const loginExp = process.env.LOGIN_EXPIRATION_STRING || '1d'
 const loginCookieName = process.env.LOGIN_COOKIE_NAME || 'loginSession'
-
-export async function hashPassword(password: string) {
-    const hash = await bcrypt.hash(password, 10)
-    return Buffer.from(hash).toString('base64')
-}
-
-export async function verifyPassword(password: string, base64Hash: string) {
-    const hash = Buffer.from(base64Hash, 'base64').toString('utf-8')
-    return bcrypt.compare(password, hash)
-}
 
 export async function getLoginSession() {
     const cookieStore = await cookies()
